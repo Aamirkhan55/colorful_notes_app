@@ -1,3 +1,4 @@
+import 'package:colorful_notes_app/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,7 +9,7 @@ class HomeScreen extends StatelessWidget {
     return  Scaffold(
       appBar: AppBar(
         elevation: 0, 
-        backgroundColor: Colors.black,
+        backgroundColor: darkBackgroundColor,
         title: const Text(
           'Notes',
           style: TextStyle(
