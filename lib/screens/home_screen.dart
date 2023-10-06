@@ -2,6 +2,7 @@ import 'package:colorful_notes_app/screens/create_note_screen.dart';
 import 'package:colorful_notes_app/screens/edit_note_screen.dart';
 import 'package:colorful_notes_app/theme/colors.dart';
 import 'package:colorful_notes_app/widgets/button_widget.dart';
+import 'package:colorful_notes_app/widgets/dailog_box_widget.dart';
 import 'package:colorful_notes_app/widgets/single_note_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +44,16 @@ class HomeScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const EditNoteScreen()));
               },
-              onLongPress: () {},
+              onLongPress: () {
+                showDailogBoxWidget(
+                  context,
+                  height: 250,
+                  title: "Are you sure want\nto delete this note..?",
+                  onTapYes: () {
+                    Navigator.pop(context);
+                  }
+                  );
+              },
             );
           }),
       floatingActionButton: SizedBox(
