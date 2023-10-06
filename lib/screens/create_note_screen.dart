@@ -1,3 +1,4 @@
+import 'package:colorful_notes_app/utils/utility.dart';
 import 'package:colorful_notes_app/widgets/button_widget.dart';
 import 'package:colorful_notes_app/widgets/textform_widget.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,31 @@ class _CreateNoteScreenState extends State<CreateNoteScreen> {
                 fontSize: 20,
                 hintText: 'Start Typing...', 
                 controller: _bodyController,
-                ),  
+                ), 
+              const SizedBox(height: 10),  
+              SizedBox(
+                height: 60,
+                child: ListView.builder(
+                  itemCount: predefinedColors.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    final singleColor = predefinedColors[index];
+                    return Container(
+                      width: 60,
+                      height: 60,
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      decoration:BoxDecoration(
+                        color: singleColor,
+                        border: Border.all(
+                          width: 3,
+                          color: Colors.white,
+                        ),
+                        shape: BoxShape.circle,
+                      ),
+                    );
+                  }
+                  ),
+              ), 
             ],
           ),
         ),
