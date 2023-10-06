@@ -1,5 +1,5 @@
 import 'package:colorful_notes_app/screens/home_screen.dart';
-// import 'package:colorful_notes_app/theme/colors.dart';
+import 'package:colorful_notes_app/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,14 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ColorFul Notes', 
-      // theme: ThemeData(
-      //   primarySwatch: primaryColor,
-      //   brightness: Brightness.dark,
-      // ),
-      home: HomeScreen(),
+      theme: ThemeData(
+        primarySwatch: primaryColor,
+        brightness: Brightness.dark,
+      ),
+      home: const HomeScreen(),
     );
   }
 }
