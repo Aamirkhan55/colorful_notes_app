@@ -1,4 +1,5 @@
 import 'package:colorful_notes_app/screens/create_note_screen.dart';
+import 'package:colorful_notes_app/screens/edit_note_screen.dart';
 import 'package:colorful_notes_app/theme/colors.dart';
 import 'package:colorful_notes_app/widgets/button_widget.dart';
 import 'package:colorful_notes_app/widgets/single_note_widget.dart';
@@ -39,7 +40,9 @@ class HomeScreen extends StatelessWidget {
               title: 'Title',
               body: 'Body',
               color: 4294967295,
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const EditNoteScreen()));
+              },
               onLongPress: () {},
             );
           }),
