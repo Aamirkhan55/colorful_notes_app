@@ -1,5 +1,6 @@
 import 'package:colorful_notes_app/theme/colors.dart';
 import 'package:colorful_notes_app/widgets/button_widget.dart';
+import 'package:colorful_notes_app/widgets/single_note_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -27,9 +28,10 @@ class HomeScreen extends StatelessWidget {
                 ButtonWidget(icon: Icons.info)
               ],
             ),
-          )
+          ),
         ],  
       ),
+      body: const SingleNote()
     );
   }
 }
