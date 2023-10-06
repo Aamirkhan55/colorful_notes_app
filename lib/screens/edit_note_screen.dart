@@ -43,7 +43,7 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                     onTap: () {
                       showDailogBoxWidget(context,
                           height: 240,
-                          title: "Are you sure want\nto edit this note..?",
+                          title: "Save Changes ?",
                           onTapYes: () {
                         Navigator.pop(context);
                       });
