@@ -1,5 +1,6 @@
 import 'package:colorful_notes_app/utils/utility.dart';
 import 'package:colorful_notes_app/widgets/button_widget.dart';
+import 'package:colorful_notes_app/widgets/dailog_box_widget.dart';
 import 'package:colorful_notes_app/widgets/textform_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -39,7 +40,14 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                   ),
                   ButtonWidget(
                     icon: Icons.save,
-                    onTap: () {},
+                    onTap: () {
+                      showDailogBoxWidget(context,
+                          height: 240,
+                          title: "Are you sure want\nto edit this note..?",
+                          onTapYes: () {
+                        Navigator.pop(context);
+                      });
+                    },
                   )
                 ],
               ),
@@ -76,11 +84,11 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                           decoration: BoxDecoration(
                             color: singleColor,
                             border: Border.all(
-                                width: 3,
-                                color: selectedColor == singleColor.value
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                    ),
+                              width: 3,
+                              color: selectedColor == singleColor.value
+                                  ? Colors.white
+                                  : Colors.transparent,
+                            ),
                             shape: BoxShape.circle,
                           ),
                         ),

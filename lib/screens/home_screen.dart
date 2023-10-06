@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget {
               onLongPress: () {
                 showDailogBoxWidget(
                   context,
-                  height: 250,
+                  height: 240,
                   title: "Are you sure want\nto delete this note..?",
                   onTapYes: () {
                     Navigator.pop(context);

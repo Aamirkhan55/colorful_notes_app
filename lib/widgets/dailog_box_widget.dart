@@ -38,7 +38,7 @@ showDailogBoxWidget(BuildContext context,
                       GestureDetector(
                         onTap:  () => Navigator.pop(context),
                         child: Container(
-                          width: 150, 
+                          width: 100, 
                           height: 40,
                           decoration: BoxDecoration(
                             color: Colors.red,
@@ -58,7 +58,7 @@ showDailogBoxWidget(BuildContext context,
                     GestureDetector(
                         onTap:  onTapYes,
                         child: Container(
-                          width: 150, 
+                          width: 100, 
                           height: 40,
                           decoration: BoxDecoration(
                             color: Colors.green,
