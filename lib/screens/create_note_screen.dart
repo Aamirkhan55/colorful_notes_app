@@ -11,14 +11,14 @@ class CreateNoteScreen extends StatefulWidget {
 }
 
 class _CreateNoteScreenState extends State<CreateNoteScreen> {
-
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _bodyController = TextEditingController();
 
+  int selectedColor = 4294967295;
   @override
   void dispose() {
-     _titleController.dispose();
-     _bodyController.dispose();
+    _titleController.dispose();
+    _bodyController.dispose();
     super.dispose();
   }
 
@@ -32,53 +32,61 @@ class _CreateNoteScreenState extends State<CreateNoteScreen> {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: [
+                children: [
                   ButtonWidget(
                     icon: Icons.arrow_back,
                     onTap: () => Navigator.pop(context),
-                    ),
+                  ),
                   ButtonWidget(
                     icon: Icons.done,
                     onTap: () {},
-                    )  
-                 ],
+                  )
+                ],
               ),
               const SizedBox(height: 30),
               TextForm(
-                hintText: 'Title', 
+                hintText: 'Title',
                 controller: _titleController,
-                ),
+              ),
               const SizedBox(height: 10),
               TextForm(
                 maxLines: 15,
                 fontSize: 20,
-                hintText: 'Start Typing...', 
+                hintText: 'Start Typing...',
                 controller: _bodyController,
-                ), 
-              const SizedBox(height: 10),  
+              ),
+              const SizedBox(height: 10),
               SizedBox(
                 height: 60,
                 child: ListView.builder(
-                  itemCount: predefinedColors.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    final singleColor = predefinedColors[index];
-                    return Container(
-                      width: 60,
-                      height: 60,
-                      margin: const EdgeInsets.symmetric(horizontal: 10),
-                      decoration:BoxDecoration(
-                        color: singleColor,
-                        border: Border.all(
-                          width: 3,
-                          color: Colors.white,
+                    itemCount: predefinedColors.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      final singleColor = predefinedColors[index];
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedColor = singleColor.value;
+                          });
+                        },
+                        child: Container(
+                          width: 60,
+                          height: 60,
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          decoration: BoxDecoration(
+                            color: singleColor,
+                            border: Border.all(
+                                width: 3,
+                                color: selectedColor == singleColor.value
+                                    ? Colors.white
+                                    : Colors.transparent,
+                                    ),
+                            shape: BoxShape.circle,
+                          ),
                         ),
-                        shape: BoxShape.circle,
-                      ),
-                    );
-                  }
-                  ),
-              ), 
+                      );
+                    }),
+              ),
             ],
           ),
         ),
