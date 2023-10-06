@@ -8,19 +8,19 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
-        elevation: 0, 
+        elevation: 0,
         backgroundColor: darkBackgroundColor,
         title: const Text(
           'Notes',
           style: TextStyle(
             fontSize: 40,
           ),
-          ),
+        ),
         actions: const [
           Padding(
-            padding: EdgeInsets.only(right:10.0),
+            padding: EdgeInsets.only(right: 10.0),
             child: Row(
               children: [
                 ButtonWidget(icon: Icons.search),
@@ -29,9 +29,28 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-        ],  
+        ],
       ),
-      body: const SingleNote()
+      body: ListView.builder(
+          itemCount: 5,
+          itemBuilder: (context, index) {
+            return SingleNoteWidget(
+              title: 'Title',
+              body: 'Body',
+              color: 4294967295,
+              onTap: () {},
+              onLongPress: () {},
+            );
+          }),
+          floatingActionButton: FloatingActionButton(
+            backgroundColor: Colors.black,
+            onPressed: () {},
+            child:const Icon(
+              Icons.add,
+              size: 38,
+              color: Colors.white,
+              ),
+            ),
     );
   }
 }
