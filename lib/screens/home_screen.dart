@@ -1,3 +1,4 @@
+import 'package:colorful_notes_app/screens/create_note_screen.dart';
 import 'package:colorful_notes_app/theme/colors.dart';
 import 'package:colorful_notes_app/widgets/button_widget.dart';
 import 'package:colorful_notes_app/widgets/single_note_widget.dart';
@@ -42,15 +43,24 @@ class HomeScreen extends StatelessWidget {
               onLongPress: () {},
             );
           }),
-          floatingActionButton: FloatingActionButton(
-            backgroundColor: Colors.black,
-            onPressed: () {},
-            child:const Icon(
-              Icons.add,
-              size: 38,
-              color: Colors.white,
-              ),
-            ),
+      floatingActionButton: SizedBox(
+        width: 60,
+        height: 60,
+        child: FloatingActionButton(
+          backgroundColor: Colors.black,
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const CreateNoteScreen()));
+          },
+          child: const Icon(
+            Icons.add,
+            size: 38,
+            color: Colors.white,
+          ),
+        ),
+      ),
     );
   }
 }
