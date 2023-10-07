@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 final List<Color> predefinedColors = [
   const Color(0xffFD99FF),
@@ -9,3 +10,15 @@ final List<Color> predefinedColors = [
   const Color(0xffB69CFF),
   const Color(0xff9EFFFF),
 ];
+
+void  toast ({required String message}) {
+  Fluttertoast.showToast(
+    msg: message,
+    fontSize: 16.0,
+    toastLength : Toast.LENGTH_SHORT,
+    gravity: ToastGravity.BOTTOM,
+    timeInSecForIosWeb: 1,
+    backgroundColor: Colors.orange,
+    textColor: Colors.white,
+  );
+}
