@@ -1,8 +1,13 @@
+import 'package:colorful_notes_app/firebase_options.dart';
 import 'package:colorful_notes_app/screens/home_screen.dart';
 import 'package:colorful_notes_app/theme/colors.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async{
+  await Firebase.initializeApp(
+  options: DefaultFirebaseOptions.currentPlatform,
+);
   runApp(const MyApp());
 }
 

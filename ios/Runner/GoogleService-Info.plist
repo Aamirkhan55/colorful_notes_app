@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAUxZM5AzhDH5BYf0fksPgoysufeiXfq_c</string>
+	<key>GCM_SENDER_ID</key>
+	<string>738991844728</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.colorfulNotesApp</string>
+	<key>PROJECT_ID</key>
+	<string>colorful-note</string>
+	<key>STORAGE_BUCKET</key>
+	<string>colorful-note.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:738991844728:ios:1aacbe2d9a2a35fc46ec8d</string>
+</dict>
+</plist>

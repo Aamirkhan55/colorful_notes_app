@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "738991844728",
+    "project_id": "colorful-note",
+    "storage_bucket": "colorful-note.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:738991844728:android:9a3ef0e356ccd30c46ec8d",
+        "android_client_info": {
+          "package_name": "com.example.colorful_notes_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKbhrJHtRAOzQNnqZe3PMohDSnfPvjiSY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
