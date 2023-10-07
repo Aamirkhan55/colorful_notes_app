@@ -27,4 +27,20 @@ class DatabaseHandler {
         querySnapshot.docs.map((e) => NoteModel.fromSnapshot(e)).toList());
   }
 
+// Update/Edit
+static Future<void> updateNote(NoteModel note) async{
+  final noteCollection = FirebaseFirestore.instance.collection('notes');
+  final newNote = NoteModel(
+    id: note.id,
+    title: note.title,
+    color: note.color,
+    body: note.body,
+  ).toDocument();
+
+  try {
+    noteCollection.doc(note.id).update(newNote);
+  } catch (e) {
+    "Some Error Occure $e";
+  }
+}
 }
