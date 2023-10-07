@@ -43,4 +43,14 @@ static Future<void> updateNote(NoteModel note) async{
     "Some Error Occure $e";
   }
 }
+
+// Delete Note
+static Future<void> deleteNote(String id) async{
+  final noteCollection = FirebaseFirestore.instance.collection('notes');
+  try {
+    noteCollection.doc(id).delete();
+  } catch (e) {
+    "Some Error Occure $e";
+  }
+}
 }
