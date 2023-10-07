@@ -12,14 +12,14 @@ class EditNoteScreen extends StatefulWidget {
 }
 
 class _EditNoteScreenState extends State<EditNoteScreen> {
-  final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _bodyController = TextEditingController();
+  TextEditingController? _titleController;
+  TextEditingController? _bodyController;
 
   int selectedColor = 4294967295;
   @override
   void dispose() {
-    _titleController.dispose();
-    _bodyController.dispose();
+    _titleController!.dispose();
+    _bodyController!.dispose();
     super.dispose();
   }
 
@@ -54,14 +54,14 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
               const SizedBox(height: 30),
               TextForm(
                 hintText: 'Title',
-                controller: _titleController,
+                controller: _titleController!,
               ),
               const SizedBox(height: 10),
               TextForm(
                 maxLines: 15,
                 fontSize: 20,
                 hintText: 'Start Typing...',
-                controller: _bodyController,
+                controller: _bodyController!,
               ),
               const SizedBox(height: 10),
               SizedBox(
