@@ -1,3 +1,5 @@
+import 'package:colorful_notes_app/database/db_handler.dart';
+import 'package:colorful_notes_app/model/note_model.dart';
 import 'package:colorful_notes_app/screens/create_note_screen.dart';
 import 'package:colorful_notes_app/screens/edit_note_screen.dart';
 import 'package:colorful_notes_app/theme/colors.dart';
@@ -34,28 +36,45 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: ListView.builder(
-          itemCount: 5,
-          itemBuilder: (context, index) {
-            return SingleNoteWidget(
-              title: 'Title',
-              body: 'Body',
-              color: 4294967295,
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const EditNoteScreen()));
-              },
-              onLongPress: () {
-                showDailogBoxWidget(
-                  context,
-                  height: 240,
-                  title: "Are you sure want\nto delete this note..?",
-                  onTapYes: () {
-                    Navigator.pop(context);
-                  }
-                  );
-              },
+      body: StreamBuilder<List<NoteModel>>(
+        stream: DatabaseHandler.getNotes(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: Image.asset(
+                "assets/ios_loading.gif",
+                 width: 50,
+                 height: 50,
+                ),
             );
-          }),
+          } else {
+            
+          }
+          return ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return SingleNoteWidget(
+                  title: 'Title',
+                  body: 'Body',
+                  color: 4294967295,
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const EditNoteScreen()));
+                  },
+                  onLongPress: () {
+                    showDailogBoxWidget(context,
+                        height: 240,
+                        title: "Are you sure want\nto delete this note..?",
+                        onTapYes: () {
+                      Navigator.pop(context);
+                    });
+                  },
+                );
+              });
+        }
+      ),
       floatingActionButton: SizedBox(
         width: 60,
         height: 60,
