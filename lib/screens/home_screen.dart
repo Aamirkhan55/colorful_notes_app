@@ -53,6 +53,9 @@ class HomeScreen extends StatelessWidget {
               child: Text("No Data !"),
             );
           }
+          if(snapshot.data!.isEmpty){
+            return _noNotesWidgets();
+          }
           return ListView.builder(
               itemCount: 5,
               itemBuilder: (context, index) {
@@ -95,6 +98,32 @@ class HomeScreen extends StatelessWidget {
             color: Colors.white,
           ),
         ),
+      ),
+    );
+  }
+  
+   _noNotesWidgets() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: 200,
+            height: 200,
+            child: Image.asset("assets/add_notes_image.png"),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          const Text(
+            'Create Colorful Notes',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.w400,
+            ),
+            ),
+        ],
       ),
     );
   }
