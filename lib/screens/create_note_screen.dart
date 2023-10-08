@@ -29,72 +29,81 @@ class _CreateNoteScreenState extends State<CreateNoteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 50),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ButtonWidget(
-                    icon: Icons.arrow_back,
-                    onTap: () => Navigator.pop(context),
-                  ),
-                  ButtonWidget(
-                    icon: Icons.done,
-                    onTap: () {},
-                  )
-                ],
-              ),
-              const SizedBox(height: 30),
-              TextForm(
-                hintText: 'Title',
-                controller: _titleController,
-              ),
-              const SizedBox(height: 10),
-              TextForm(
-                maxLines: 15,
-                fontSize: 20,
-                hintText: 'Start Typing...',
-                controller: _bodyController,
-              ),
-              const SizedBox(height: 10),
-              SizedBox(
-                height: 60,
-                child: ListView.builder(
-                    itemCount: predefinedColors.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      final singleColor = predefinedColors[index];
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            selectedColor = singleColor.value;
-                          });
-                        },
-                        child: Container(
-                          width: 60,
-                          height: 60,
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                          decoration: BoxDecoration(
-                            color: singleColor,
-                            border: Border.all(
-                                width: 3,
-                                color: selectedColor == singleColor.value
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                    ),
-                            shape: BoxShape.circle,
+      body: Stack(
+        alignment: Alignment.center,
+        children: [
+          _isNoteCreating == true ? Image.asset(
+            "assets/ios_loading.gif",
+            width: 50,
+            height: 50,
+            ):
+          Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 50),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ButtonWidget(
+                      icon: Icons.arrow_back,
+                      onTap: () => Navigator.pop(context),
+                    ),
+                    ButtonWidget(
+                      icon: Icons.done,
+                      onTap: () {},
+                    )
+                  ],
+                ),
+                const SizedBox(height: 30),
+                TextForm(
+                  hintText: 'Title',
+                  controller: _titleController,
+                ),
+                const SizedBox(height: 10),
+                TextForm(
+                  maxLines: 15,
+                  fontSize: 20,
+                  hintText: 'Start Typing...',
+                  controller: _bodyController,
+                ),
+                const SizedBox(height: 10),
+                SizedBox(
+                  height: 60,
+                  child: ListView.builder(
+                      itemCount: predefinedColors.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        final singleColor = predefinedColors[index];
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedColor = singleColor.value;
+                            });
+                          },
+                          child: Container(
+                            width: 60,
+                            height: 60,
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
+                            decoration: BoxDecoration(
+                              color: singleColor,
+                              border: Border.all(
+                                  width: 3,
+                                  color: selectedColor == singleColor.value
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                      ),
+                              shape: BoxShape.circle,
+                            ),
                           ),
-                        ),
-                      );
-                    }),
-              ),
-            ],
+                        );
+                      }),
+                ),
+              ],
+            ),
           ),
         ),
-      ),
+      ]),
     );
   }
 
