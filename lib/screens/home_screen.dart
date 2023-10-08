@@ -60,9 +60,9 @@ class HomeScreen extends StatelessWidget {
               itemCount: notes!.length,
               itemBuilder: (context, index) {
                 return SingleNoteWidget(
-                  title: 'Title',
-                  body: 'Body',
-                  color: 4294967295,
+                  title: notes[index].title,
+                  body: notes[index].body,
+                  color: notes[index].color,
                   onTap: () {
                     Navigator.push(
                         context,
