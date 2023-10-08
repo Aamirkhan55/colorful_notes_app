@@ -115,7 +115,10 @@ class _CreateNoteScreenState extends State<CreateNoteScreen> {
           title: _titleController.text,
           body: _bodyController.text,
           color: selectedColor,
-        ));
+        )).then((value) {
+          _isNoteCreating = false;
+          Navigator.pop(context);
+        });
       });
     }
   }
