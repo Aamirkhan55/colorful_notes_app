@@ -1,5 +1,6 @@
 import 'package:colorful_notes_app/database/db_handler.dart';
 import 'package:colorful_notes_app/model/note_model.dart';
+import 'package:colorful_notes_app/theme/colors.dart';
 import 'package:colorful_notes_app/utils/utility.dart';
 import 'package:colorful_notes_app/widgets/button_widget.dart';
 import 'package:colorful_notes_app/widgets/textform_widget.dart';
@@ -29,15 +30,16 @@ class _CreateNoteScreenState extends State<CreateNoteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          _isNoteCreating == true ? Image.asset(
-            "assets/ios_loading.gif",
-            width: 50,
-            height: 50,
-            ):
-          Padding(
+      backgroundColor: _isNoteCreating == true? lightGreyColor : darkBackgroundColor,
+      body: Stack(alignment: Alignment.center, children: [
+        _isNoteCreating == true
+            ? Image.asset(
+                "assets/ios_loading.gif",
+                width: 50,
+                height: 50,
+              )
+            : Container(),
+        Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 50),
           child: SingleChildScrollView(
             child: Column(
@@ -88,11 +90,11 @@ class _CreateNoteScreenState extends State<CreateNoteScreen> {
                             decoration: BoxDecoration(
                               color: singleColor,
                               border: Border.all(
-                                  width: 3,
-                                  color: selectedColor == singleColor.value
-                                      ? Colors.white
-                                      : Colors.transparent,
-                                      ),
+                                width: 3,
+                                color: selectedColor == singleColor.value
+                                    ? Colors.white
+                                    : Colors.transparent,
+                              ),
                               shape: BoxShape.circle,
                             ),
                           ),
@@ -107,28 +109,27 @@ class _CreateNoteScreenState extends State<CreateNoteScreen> {
     );
   }
 
-  createNote () {
-    setState(()  =>_isNoteCreating = true);
-      Future.delayed(const Duration(milliseconds: 1000)).then((value) {
-        if(_titleController.text.isEmpty) {
-          toast(message: 'Enter Title');
-          setState(()=> _isNoteCreating = false);
-          return;
-        }
-        if(_bodyController.text.isEmpty) {
-          toast(message: 'Type Something in body');
-          setState(()=> _isNoteCreating = false);
-          return;
-        }
-        DatabaseHandler.createNote(NoteModel(
-          title: _titleController.text,
-          body: _bodyController.text,
-          color: selectedColor,
-        )).then((value) {
-          _isNoteCreating = false;
-          Navigator.pop(context);
-        });
+  createNote() {
+    setState(() => _isNoteCreating = true);
+    Future.delayed(const Duration(milliseconds: 1000)).then((value) {
+      if (_titleController.text.isEmpty) {
+        toast(message: 'Enter Title');
+        setState(() => _isNoteCreating = false);
+        return;
+      }
+      if (_bodyController.text.isEmpty) {
+        toast(message: 'Type Something in body');
+        setState(() => _isNoteCreating = false);
+        return;
+      }
+      DatabaseHandler.createNote(NoteModel(
+        title: _titleController.text,
+        body: _bodyController.text,
+        color: selectedColor,
+      )).then((value) {
+        _isNoteCreating = false;
+        Navigator.pop(context);
       });
-    }
+    });
   }
-
+}
