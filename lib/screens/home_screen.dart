@@ -47,8 +47,11 @@ class HomeScreen extends StatelessWidget {
                  height: 50,
                 ),
             );
-          } else {
-            
+          } 
+          if(snapshot.hasData == false) {
+            return const Center(
+              child: Text("No Data !"),
+            );
           }
           return ListView.builder(
               itemCount: 5,
