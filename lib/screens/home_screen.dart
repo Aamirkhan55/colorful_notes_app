@@ -49,15 +49,15 @@ class HomeScreen extends StatelessWidget {
             );
           } 
           if(snapshot.hasData == false) {
-            return const Center(
-              child: Text("No Data !"),
-            );
+            return _noNotesWidgets();
           }
           if(snapshot.data!.isEmpty){
             return _noNotesWidgets();
           }
-          return ListView.builder(
-              itemCount: 5,
+          if(snapshot.hasData) {
+            final notes = snapshot.data;
+            return ListView.builder(
+              itemCount: notes!.length,
               itemBuilder: (context, index) {
                 return SingleNoteWidget(
                   title: 'Title',
@@ -78,7 +78,17 @@ class HomeScreen extends StatelessWidget {
                     });
                   },
                 );
-              });
+              }
+              );
+          }
+          return Center(
+              child: Image.asset(
+                "assets/ios_loading.gif",
+                 width: 50,
+                 height: 50,
+                ),
+            );
+          
         }
       ),
       floatingActionButton: SizedBox(
