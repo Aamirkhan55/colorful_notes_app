@@ -1,3 +1,5 @@
+import 'package:colorful_notes_app/database/db_handler.dart';
+import 'package:colorful_notes_app/model/note_model.dart';
 import 'package:colorful_notes_app/utils/utility.dart';
 import 'package:colorful_notes_app/widgets/button_widget.dart';
 import 'package:colorful_notes_app/widgets/textform_widget.dart';
@@ -13,6 +15,8 @@ class CreateNoteScreen extends StatefulWidget {
 class _CreateNoteScreenState extends State<CreateNoteScreen> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _bodyController = TextEditingController();
+
+  bool _isNoteCreating = false;
 
   int selectedColor = 4294967295;
   @override
@@ -93,4 +97,26 @@ class _CreateNoteScreenState extends State<CreateNoteScreen> {
       ),
     );
   }
-}
+
+  createNote () {
+    setState(()  =>_isNoteCreating = true);
+      Future.delayed(const Duration(milliseconds: 1000)).then((value) {
+        if(_titleController.text.isEmpty) {
+          toast(message: 'Enter Title');
+          setState(()=> _isNoteCreating = false);
+          return;
+        }
+        if(_bodyController.text.isEmpty) {
+          toast(message: 'Type Something in body');
+          setState(()=> _isNoteCreating = false);
+          return;
+        }
+        DatabaseHandler.createNote(NoteModel(
+          title: _titleController.text,
+          body: _bodyController.text,
+          color: selectedColor,
+        ));
+      });
+    }
+  }
+
