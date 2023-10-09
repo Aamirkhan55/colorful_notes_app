@@ -67,14 +67,15 @@ class HomeScreen extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const EditNoteScreen()));
+                            builder: (context) => EditNoteScreen(noteModel: notes[index],)));
                   },
                   onLongPress: () {
                     showDailogBoxWidget(context,
                         height: 240,
                         title: "Are you sure want\nto delete this note..?",
                         onTapYes: () {
-                      Navigator.pop(context);
+                          DatabaseHandler.deleteNote(notes[index].id!);
+                         Navigator.pop(context);
                     });
                   },
                 );

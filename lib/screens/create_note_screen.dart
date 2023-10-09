@@ -58,11 +58,11 @@ class _CreateNoteScreenState extends State<CreateNoteScreen> {
                       ),
                       ButtonWidget(
                         icon: Icons.done,
-                        onTap: () {},
+                        onTap: createNote,
                       )
                     ],
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 10),
                   TextForm(
                     hintText: 'Title',
                     controller: _titleController,
